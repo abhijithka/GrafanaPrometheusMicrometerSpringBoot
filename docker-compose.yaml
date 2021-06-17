@@ -20,3 +20,27 @@ services:
     ports:
       - 5672:5672
       - 15672:15672
+
+  api:
+    build: api
+    container_name: api
+    restart: always
+    environment:
+      - SPRING_PROFILES_ACTIVE=local
+    volumes:
+      - "$PWD/config:/home/conf"
+    ports: 
+      - "8083:8080"
+    depends_on:
+      - db
+
+  labeler:
+    build: labeler
+    container_name: labeler
+    environment:
+      - SPRING_PROFILES_ACTIVE=local
+    restart: always
+    volumes:
+      - "$PWD/config:/home/conf"
+    ports: 
+      - "8084:8080"
