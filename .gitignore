@@ -2,3 +2,6 @@
 .docker/
 api/.gradle
 api/.idea
+labeler/.gradle
+labeler/.idea
+
