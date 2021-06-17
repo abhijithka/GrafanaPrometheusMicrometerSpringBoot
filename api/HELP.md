@@ -1,7 +1,7 @@
 # Read Me First
 The following was discovered as part of building this project:
 
-* The original package name 'com.example.logging-consumer' is invalid and this project uses 'com.example.loggingconsumer' instead.
+* The original package name 'com.example.logging-consumer' is invalid and this project uses 'com.example.labelapi' instead.
 
 # Getting Started
 

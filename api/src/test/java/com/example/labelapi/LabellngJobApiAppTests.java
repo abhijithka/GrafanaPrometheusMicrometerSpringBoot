@@ -1,10 +1,10 @@
-package com.example.loggingconsumer;
+package com.example.labelapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class LoggingConsumerApplicationTests {
+class LabellngJobApiAppTests {
 
 	@Test
 	void contextLoads() {
