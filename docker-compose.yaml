@@ -1,0 +1,22 @@
+
+version: "3.8"
+ 
+services:
+  
+  db:
+    image: mongo:latest
+    container_name: db
+    ports:
+      - "27017:27017"
+    restart: always
+    command: mongod
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: rabbitmq
+    volumes:
+      - ./.docker/rabbitmq/data/:/var/lib/rabbitmq/
+      - ./.docker/rabbitmq/log/:/var/log/rabbitmq/
+    ports:
+      - 5672:5672
+      - 15672:15672
