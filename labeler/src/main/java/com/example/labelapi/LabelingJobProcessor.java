@@ -23,16 +23,22 @@ public class LabelingJobProcessor {
     @Bean
     public Consumer<Job> execute() {
         return job -> {
-            System.out.println("Message: " + job + " delivered");
             processLabelingJob(job);
         };
     }
 
     private void processLabelingJob(Job job) {
 
-        System.out.println("Processing job : " + job);
         job.setStatus(JobStatus.EXECUTING);
         streamBridge.send(BINDING_JOB_STARTED, job);
+
+        // Fail some job for testing
+        if (job.getInput().length() == 9) {
+            job.setStatus(JobStatus.DISCARDED);
+            streamBridge.send(BINDING_JOB_FAILED, job);
+            return;
+        }
+
         String label = labelInput(job.getInput());
         job.setOutput(label);
         job.setStatus(JobStatus.SUCCEEDED);

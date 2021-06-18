@@ -1,0 +1,19 @@
+Presentation
+
+- Architecture Diagram
+
+- Project Structure and Docker compose and Dockerfiles
+
+- CRUD APIs - swagger
+
+- Labeler logic 
+
+- Sample request - see ouput and status in DB
+
+- Custom Metrics defined
+
+- Grafana dashboard
+
+- Make 10000 requests in postman
+
+- Note about assumptions
