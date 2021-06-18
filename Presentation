@@ -17,3 +17,28 @@ Presentation
 - Make 10000 requests in postman
 
 - Note about assumptions
+
+
+Iterations
+
+- Understand the problem and identify the priorities
+- Decided on the architecture - wanted it to be simple to have a working prototype
+- Set up the work environment - docker-compose file
+- Set up the project - api and labeler
+- Set up postman to simulate requests
+- Get the to and fro communcation working via event streaming between the api and labeler
+- Define few custom metrices
+- Visualize these metrices in grafana dashboard
+
+- Read through the problem and find out missed infos
+- Improve the existing implementation - add more APIs + statuses + labeling logic + more custom metrics
+
+
+Improvements
+
+- Database schema : could avoid duplicates, add more meta data info for monitoring, add constraints and indexing
+- Proper security and exception handling
+- More structured JSON input for labeler
+- Unit tests and e2e tests
+- More custom metrics
+- API request validations

@@ -48,7 +48,7 @@ public class JobMonitor {
     private void updateAvgTurnAroundTime() {
         List<JobMetadata> completedJobMetadata = metadataRepository.findAllByStartTimeNotAndFinishTimeNot(null, null);
         OptionalDouble avgTime = completedJobMetadata.stream().mapToDouble(completedJob -> ChronoUnit.MILLIS.between(completedJob.getStartTime(), completedJob.getFinishTime())).average();
-        avgTurnaroundTime.set(((long) avgTime.orElse(0) / 1000));
+        avgTurnaroundTime.set(((long) avgTime.orElse(0) )/ 1000);
     }
 
     @Bean
