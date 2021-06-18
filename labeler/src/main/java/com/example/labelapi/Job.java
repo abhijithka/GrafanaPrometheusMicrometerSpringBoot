@@ -1,4 +1,4 @@
-package com.example.labelapi.api;
+package com.example.labelapi;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;

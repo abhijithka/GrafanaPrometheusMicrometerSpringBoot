@@ -10,16 +10,10 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Job {
+public class JobRequestDto {
 
-    @Id
-    private long id;
-    private JobStatus status;
     private long expiration;
-    LocalDateTime submittedAt;
 
     // TODO: Replace with json
     String input;
-    String output;
-    String context;
 }

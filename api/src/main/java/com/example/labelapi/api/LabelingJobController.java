@@ -20,7 +20,7 @@ public class LabelingJobController {
 
     @Operation(summary = "Create a new labeling job")
     @PostMapping
-    public ResponseEntity<Job> createJob(@Validated @RequestBody Job jobRequest) {
+    public ResponseEntity<Job> createJob(@Validated @RequestBody JobRequestDto jobRequest) {
 
         Job responseDTO = labelingJobService.createLabelingJob(jobRequest);
 

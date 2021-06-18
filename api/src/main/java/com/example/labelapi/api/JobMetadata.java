@@ -7,19 +7,16 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
-public class Job {
+@NoArgsConstructor
+@AllArgsConstructor
+public class JobMetadata {
 
+    // Same as jobId for now, check again
     @Id
     private long id;
+    private LocalDateTime startTime;
     private JobStatus status;
-    private long expiration;
-    LocalDateTime submittedAt;
+    private LocalDateTime finishTime;
 
-    // TODO: Replace with json
-    String input;
-    String output;
-    String context;
 }

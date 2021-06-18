@@ -9,7 +9,10 @@ import java.util.function.Consumer;
 @Service
 public class LabelingJobProcessor {
 
-    private static final String BINDING_FINISHED_JOB = "finish-out-0";
+    private static final String BINDING_JOB_STARTED = "started-out-0";
+    private static final String BINDING_JOB_RETRIED = "retried-out-0";
+    private static final String BINDING_JOB_SUCCEEDED = "succeeded-out-0";
+    private static final String BINDING_JOB_FAILED = "failed-out-0";
 
     private StreamBridge streamBridge;
 
@@ -18,17 +21,26 @@ public class LabelingJobProcessor {
     }
 
     @Bean
-    public Consumer<String> start() {
-        return payload -> {
-            System.out.println("Static consumer called ");
-            System.out.println("Message: " + payload + " delivered");
-            processLabelingJob(payload);
+    public Consumer<Job> execute() {
+        return job -> {
+            System.out.println("Message: " + job + " delivered");
+            processLabelingJob(job);
         };
     }
 
-    public void processLabelingJob(String job) {
+    private void processLabelingJob(Job job) {
 
         System.out.println("Processing job : " + job);
-        streamBridge.send(BINDING_FINISHED_JOB, "Finished");
+        job.setStatus(JobStatus.EXECUTING);
+        streamBridge.send(BINDING_JOB_STARTED, job);
+        String label = labelInput(job.getInput());
+        job.setOutput(label);
+        job.setStatus(JobStatus.SUCCEEDED);
+        streamBridge.send(BINDING_JOB_SUCCEEDED, job);
+    }
+
+    // TODO: Improve the input/out and labeling logic
+    private String labelInput(String input) {
+        return "Output_" + input.length();
     }
 }
